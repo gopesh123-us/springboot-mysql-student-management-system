@@ -3,7 +3,7 @@ services:
   dbservice:
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=Guruji123$
+      - MYSQL_ROOT_PASSWORD=Guruji123$$
       - MYSQL_USERNAME=root
       - MYSQL_DATABASE=sms
     volumes:
@@ -16,13 +16,13 @@ services:
       - boot-mysql-net
 
   appservice:
-    build: ./boot
+    build: ./target
     depends_on:
       - dbservice
     environment:
       - spring.datasource.url=jdbc:mysql://dbservice:3306/sms?createDatabaseIfNotExist=true
       - spring.datasource.username=root
-      - spring.datasource.password=Guruji123$
+      - spring.datasource.password=Guruji123$$
     ports:
       - 8081:8080
 
