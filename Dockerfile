@@ -1,3 +1,5 @@
 FROM openjdk:17 
-ADD target/sms-mysql-app.jar .
-ENTRYPOINT [ "java", "-jar", "/home/app/target/sms-mysql-app.jar" ]
+WORKDIR /app
+ADD target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT [ "java", "-jar", "app:.jar" ]
