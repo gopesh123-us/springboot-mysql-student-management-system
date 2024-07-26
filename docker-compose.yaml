@@ -24,7 +24,7 @@ services:
       - spring.datasource.username=root
       - spring.datasource.password=Guruji123$$
     ports:
-      - 8081:8080
+      - 8080:8080
 
     networks:
       - boot-mysql-net
