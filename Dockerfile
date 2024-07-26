@@ -1,5 +1,7 @@
-FROM openjdk:17 
+FROM openjdk:17
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+EXPOSE 8080 
 WORKDIR /app
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT [ "java", "-jar", "app:.jar" ]
+ENTRYPOINT [ "java", "-jar", "/home/app/target/sms-mysql-app.jar" ]
