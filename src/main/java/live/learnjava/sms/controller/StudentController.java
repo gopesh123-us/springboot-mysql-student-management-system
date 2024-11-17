@@ -2,9 +2,10 @@ package live.learnjava.sms.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import live.learnjava.sms.service.IStudentService;
 @Controller
 @RequestMapping("/sms")
 public class StudentController {
-
+	private Logger logger = LoggerFactory.getLogger(StudentController.class);
 	private IStudentService service;
 
 	public StudentController(IStudentService service) {
@@ -28,6 +29,7 @@ public class StudentController {
 	// handler method to list students and return model and view
 	@GetMapping("/students")
 	public String listStudents(Model model) {
+		logger.info("*** inside listStudents() ***");
 		// add data to model
 		List<Student> students = service.getAllStudents();
 		model.addAttribute("students", students);

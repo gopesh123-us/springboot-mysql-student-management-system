@@ -1,20 +1,23 @@
 package live.learnjava.sms;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import live.learnjava.sms.entity.Student;
 import live.learnjava.sms.repository.StudentRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
-
+	private static Logger logger = LoggerFactory.getLogger(Application.class);
 	public static void main(String[] args) {
+		logger.info("***starting of main method***");
 		SpringApplication.run(Application.class, args);
+		logger.info("***ending of main method***");
 	}
-
+	
 	@Autowired
 	private StudentRepository studentRepository;
 
